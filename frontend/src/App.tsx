@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, CssBaseline, ThemeProvider, createTheme } from '@mui/material';
 import Sidebar from './components/Sidebar';
 import Dashboard from './components/Dashboard';

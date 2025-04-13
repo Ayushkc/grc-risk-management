@@ -23,7 +23,6 @@ const heatmapData: HeatmapCell[][] = [
   ],
 ];
 
-const impactLabels = ['Low', 'Medium', 'High'];
 const likelihoodLabels = ['Low', 'Medium', 'High'];
 
 export default function RiskHeatmap() {

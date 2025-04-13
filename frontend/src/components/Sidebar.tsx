@@ -1,12 +1,4 @@
-import React from 'react';
-import {
-  Box,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Typography,
-} from '@mui/material';
+import { List, ListItem, ListItemIcon, ListItemText, Box, Typography } from '@mui/material';
 import {
   Dashboard,
   Assessment,

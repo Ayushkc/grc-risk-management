@@ -1,4 +1,3 @@
-import React from "react";
 import { Users, Settings, AlertTriangle, Bell, ShieldCheck, FileText, LayoutDashboard } from "lucide-react";
 
 const navItems = [
