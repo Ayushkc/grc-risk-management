@@ -1,0 +1,72 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  name      String
+  role      Role     @default(USER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  risks     Risk[]
+  controls  Control[]
+}
+
+model Risk {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  impact      Int
+  likelihood  Int
+  status      RiskStatus @default(OPEN)
+  owner       User     @relation(fields: [ownerId], references: [id])
+  ownerId     String
+  controls    Control[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Control {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  type        ControlType
+  status      ControlStatus @default(ACTIVE)
+  owner       User     @relation(fields: [ownerId], references: [id])
+  ownerId     String
+  risks       Risk[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+enum Role {
+  ADMIN
+  USER
+  AUDITOR
+}
+
+enum RiskStatus {
+  OPEN
+  IN_PROGRESS
+  MITIGATED
+  CLOSED
+}
+
+enum ControlType {
+  PREVENTIVE
+  DETECTIVE
+  CORRECTIVE
+}
+
+enum ControlStatus {
+  ACTIVE
+  INACTIVE
+  UNDER_REVIEW
+} 
